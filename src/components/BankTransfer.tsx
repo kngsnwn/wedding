@@ -18,19 +18,19 @@ const BankTransfer = () => {
 
   const groomAccounts: AccountInfo[] = [
     {
-      name: '강순원원',
+      name: '강순원',
       bank: '하나',
       number: '117-891770-28107',
       relation: '신랑'
     },
     {
-      name: '강순투투',
+      name: '강순원투',
       bank: '농협',
       number: '453065-56-032166',
       relation: '아버지'
     },
     {
-      name: '강순삼삼',
+      name: '강순원쓰리',
       bank: '하나',
       number: '655-082594-00108',
       relation: '어머니'
@@ -39,19 +39,19 @@ const BankTransfer = () => {
 
   const brideAccounts: AccountInfo[] = [
     {
-      name: '강순원원',
+      name: '강순트',
       bank: '카카오뱅크',
       number: '3333-04-1234567',
       relation: '신부'
     },
     {
-      name: '강순투투',
+      name: '강순투원',
       bank: '국민은행',
       number: '012-3456-7890',
       relation: '아버지'
     },
     {
-      name: '강순삼삼',
+      name: '강순투투',
       bank: '신한은행',
       number: '110-456-789012',
       relation: '어머니'
@@ -160,7 +160,7 @@ const BankTransfer = () => {
       <div className="closing-message">
         <div className="divider"></div>
         <p>소중한 마음 감사드립니다</p>
-        <div className="signature">강순원 · 김미나 드림</div>
+        <div className="signature">강순원 · 강순투 드림</div>
       </div>
     </div>
   );

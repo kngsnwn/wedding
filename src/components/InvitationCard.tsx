@@ -11,7 +11,7 @@ interface InvitationData {
 }
 
 const InvitationData: InvitationData = {
-  name: '강순원 신랑랑님 + 강순원원 신부님',
+  name: '강순원 신랑님 + 강순투 신부님',
   date: '2026년 1월 10일',
   time: '12:00',
   location: '서울 웨딩홀',
