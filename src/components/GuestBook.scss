@@ -1,0 +1,454 @@
+.guestbook-section {
+  padding: 4rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+
+  .section-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .section-title {
+      font-family: 'Parisienne', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #333;
+      font-weight: 400;
+      white-space: pre-wrap;
+    }
+
+    .subtitle {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      white-space: pre-wrap;
+    }
+
+
+    .description {
+      padding-bottom: 2rem;
+      white-space: pre-wrap;
+      
+      p {
+        margin: 0.3rem 0;
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.6;
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+    }
+  }
+
+  .section-guestbook-area-1 {
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .guestbook-container {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .loading-message,
+    .error-message {
+      text-align: center;
+      padding: 2rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      background: white;
+      margin-bottom: 1rem;
+
+      p {
+        margin: 0 0 1rem 0;
+        color: #666;
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+
+      .retry-button {
+        background: #3191e9;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-family: 'Noto Sans KR', sans-serif;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background: #2079d0;
+        }
+      }
+    }
+
+    .loading-message {
+      border-color: #e3f2fd;
+      background: #f3f9ff;
+
+      p {
+        color: #1976d2;
+      }
+    }
+
+    .error-message {
+      border-color: #ffebee;
+      background: #fef7f7;
+
+      p {
+        color: #d32f2f;
+      }
+    }
+
+    .guestbook-write-button {
+      margin-bottom: 0.5rem;
+
+      .write-button {
+        text-align: center;
+        font-size: 1rem;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: 'Noto Sans KR', sans-serif;
+
+        &:hover {
+          background: #f8f9fa;
+          border-color: #ccc;
+        }
+
+        span {
+          color: #333;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .guestbook-form {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 0.5rem;
+
+      .form-group {
+        margin-bottom: 1rem;
+
+        input, textarea {
+          width: 100%;
+          padding: 0.75rem;
+          border: 1px solid #ddd;
+          border-radius: 0.375rem;
+          font-size: 0.9rem;
+          font-family: 'Noto Sans KR', sans-serif;
+          box-sizing: border-box;
+          transition: border-color 0.2s ease;
+
+          &:focus {
+            outline: none;
+            border-color: #3191e9;
+          }
+
+          &::placeholder {
+            color: #999;
+          }
+        }
+
+        textarea {
+          resize: vertical;
+          min-height: 4rem;
+        }
+      }
+
+      .form-buttons {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+
+        button {
+          padding: 0.75rem 1.5rem;
+          border: none;
+          border-radius: 0.375rem;
+          font-size: 0.9rem;
+          font-family: 'Noto Sans KR', sans-serif;
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          &.submit-button {
+            background: #3191e9;
+            color: white;
+
+            &:hover {
+              background: #2079d0;
+            }
+          }
+
+          &.cancel-button {
+            background: #6c757d;
+            color: white;
+
+            &:hover {
+              background: #545b62;
+            }
+          }
+        }
+      }
+    }
+
+    .board-list {
+      margin-top: 0.5rem;
+      list-style: none;
+      padding: 0;
+      overflow: auto;
+      height: 32rem;
+      background: #f8f9fa;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+
+      .guestbook-item {
+        margin-bottom: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        background: white;
+        position: relative;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        .guestbook-content {
+          padding: 1.5rem;
+          border-radius: 0.5rem;
+
+          .guestbook-header {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+
+            .nameleading {
+              font-weight: 600;
+              color: #333;
+              font-family: 'Noto Sans KR', sans-serif;
+            }
+
+            .guestbook-edit-button {
+              position: absolute;
+              top: 1rem;
+              right: 1rem;
+              display: flex;
+
+              button {
+                background: none;
+                border: none;
+                color: #ccc;
+                font-size: 0.875rem;
+                cursor: pointer;
+                font-family: 'Noto Sans KR', sans-serif;
+                transition: color 0.2s ease;
+
+                &:hover {
+                  color: #666;
+                }
+
+                &.edit-btn {
+                  margin-right: 0.5rem;
+                }
+              }
+            }
+          }
+
+          .guestbook-message {
+            margin-bottom: 1rem;
+            display: flex;
+
+            .message-text {
+              font-size: 1rem;
+              flex: 1;
+              word-break: break-all;
+              line-height: 1.6;
+              color: #333;
+              font-family: 'Noto Sans KR', sans-serif;
+            }
+          }
+
+          .guestbook-footer {
+            display: flex;
+
+            .guestbookdate {
+              display: flex;
+              align-self: flex-start;
+              font-size: 0.875rem;
+              color: #ccc;
+              letter-spacing: normal;
+              font-family: 'Noto Sans KR', sans-serif;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+
+    .section-box {
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+      }
+
+      .description {
+        padding-bottom: 1.5rem;
+        
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .section-guestbook-area-1 {
+      padding: 0 1rem;
+
+      .guestbook-form {
+        padding: 1rem;
+
+        .form-group {
+          margin-bottom: 0.75rem;
+
+          input, textarea {
+            padding: 0.625rem;
+            font-size: 0.85rem;
+          }
+        }
+
+        .form-buttons {
+          button {
+            padding: 0.625rem 1rem;
+            font-size: 0.85rem;
+          }
+        }
+      }
+
+      .board-list {
+        height: 28rem;
+
+        .guestbook-item {
+          .guestbook-content {
+            padding: 1rem;
+
+            .guestbook-header {
+              margin-bottom: 0.75rem;
+
+              .nameleading {
+                font-size: 0.9rem;
+              }
+
+              .guestbook-edit-button {
+                top: 0.75rem;
+                right: 0.75rem;
+                
+                button {
+                  font-size: 0.8rem;
+                }
+              }
+            }
+
+            .guestbook-message {
+              margin-bottom: 0.75rem;
+
+              .message-text {
+                font-size: 0.9rem;
+              }
+            }
+
+            .guestbook-footer {
+              .guestbookdate {
+                font-size: 0.8rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 0.5rem;
+
+    .section-guestbook-area-1 {
+      padding: 0 0.5rem;
+
+      .board-list {
+        height: 24rem;
+        padding: 0.25rem;
+
+        .guestbook-item {
+          margin-bottom: 0.375rem;
+
+          .guestbook-content {
+            padding: 0.75rem;
+
+            .guestbook-header {
+              margin-bottom: 0.5rem;
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 0.5rem;
+
+              .guestbook-edit-button {
+                top: 0.5rem;
+                right: 0.5rem;
+              }
+            }
+
+            .guestbook-message {
+              margin-bottom: 0.5rem;
+
+              .message-text {
+                font-size: 0.85rem;
+                line-height: 1.5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .section-box {
+      .section-title {
+        font-size: 3rem;
+      }
+
+      .subtitle {
+        font-size: 2rem;
+      }
+
+      .description {
+        p {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .section-guestbook-area-1 {
+      .board-list {
+        height: 36rem;
+      }
+    }
+  }
+}

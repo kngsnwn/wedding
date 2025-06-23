@@ -16,7 +16,14 @@
       "Bash(git push:*)",
       "Bash(ls:*)",
       "Bash(./node_modules/.bin/vite:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(rm:*)",
+      "Bash(grep:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss init:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run dev:*)"
     ],
     "deny": []
   }

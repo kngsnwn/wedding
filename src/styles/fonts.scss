@@ -1,0 +1,9 @@
+// 전역 폰트 정의 - 한 번만 로드
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Parisienne&family=Cormorant+Infant:wght@400;500;600&display=swap');
+
+// 폰트 패밀리 변수 정의
+:root {
+  --font-korean: 'Noto Sans KR', sans-serif;
+  --font-title: 'Parisienne', cursive;
+  --font-accent: 'Cormorant Infant', serif;
+}

@@ -31,14 +31,10 @@ const Couple: React.FC = () => {
       </div>
       
       <div className="couple-names">
-        <div className="name">
-          <span className="label">신랑</span>
-          <span className="name-text">강순원</span>
-        </div>
-        <div className="name">
-          <span className="label">신부</span>
-          <span className="name-text">강순원</span>
-        </div>
+        <span className="label groom">신랑</span>
+        <span className="name-text">강순원</span>
+        <span className="label bride">신부</span>
+        <span className="name-text">강순원</span>
       </div>
     </div>
   );

@@ -26,10 +26,6 @@ export default function Contact() {
           <FaPhoneAlt className="button-icon" />
           <span>연락처 보기</span>
         </button>
-        <a href="sms:010-7922-2278" className="contact-button message">
-          <FaComment className="button-icon" />
-          <span>문자 보내기</span>
-        </a>
       </div>
 
       <ContactPopup isOpen={isPopupOpen} onClose={closePopup} />

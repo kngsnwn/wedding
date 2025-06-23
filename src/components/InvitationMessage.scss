@@ -1,17 +1,116 @@
-.invitation-message {
-  padding: 2rem;
-  text-align: center;
-  color: #333;
+// 폰트는 App.scss에서 전역으로 로드됨
 
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-family: 'Nanum Pen Script', cursive;
+.invitation-message-section {
+  position: relative;
+  background: #f9f9f9;
+  padding: 4rem 0;
+  transform: scale(1);
+  z-index: 3;
+  overflow: hidden;
+
+  .wavebg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(-96%);
+    z-index: 1;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .opacity-50 {
+      opacity: 0.5;
+    }
   }
 
-  p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #666;
+  .section-label {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    font-family: 'Parisienne', cursive;
+    font-size: 3rem;
+    color: #8B4513;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    white-space: pre-wrap;
+
+    div {
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+
+  .section-post-paragraph-area {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+
+    .message-content {
+      display: flex;
+      flex-direction: column;
+      letter-spacing: -0.02em;
+      word-break: break-all;
+      white-space: pre-wrap;
+      text-align: center;
+      font-family: 'Noto Sans KR', sans-serif;
+      animation: fadeInUp 1s ease forwards;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1rem;
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #444;
+        margin: 0.3rem 0;
+        font-weight: 400;
+
+        @media (max-width: 768px) {
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 0;
   }
 }

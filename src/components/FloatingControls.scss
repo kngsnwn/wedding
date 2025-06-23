@@ -11,7 +11,7 @@
   .controls-container {
     display: flex;
     gap: 15px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 30px;
     padding: 8px 15px;
@@ -40,6 +40,31 @@
       
       svg {
         font-size: 1rem;
+      }
+    }
+
+    .share-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border-radius: 50%;
+      
+      span {
+        display: none;
+      }
+      
+      @media (min-width: 480px) {
+        width: auto;
+        padding: 0 16px;
+        border-radius: 20px;
+        
+        span {
+          display: inline;
+          margin-left: 6px;
+        }
       }
     }
   }

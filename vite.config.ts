@@ -14,5 +14,12 @@ export default defineConfig(({ mode }) => {
     },
     // This is the base URL for GitHub Pages
     base: '/',
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler' // or 'modern'
+        }
+      }
+    }
   };
 });

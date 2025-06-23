@@ -9,21 +9,39 @@ interface ImageType {
   title: string;
 }
 
-// Local photobook images (commented out to prevent 404 errors)
-const sampleImages: ImageType[] = []; 
-/* Array.from({ length: 20 }, (_, i) => {
+// Sample wedding images for demonstration - 32 images (4 rows x 8 columns)
+const sampleImages: ImageType[] = Array.from({ length: 32 }, (_, i) => {
   const imageNumber = i + 1;
   return {
     id: imageNumber,
-    url: `images/photobook%20(${imageNumber}).jpg`,
+    url: `https://picsum.photos/400/600?random=${imageNumber}`,
     alt: `Wedding photo ${imageNumber}`,
     title: `Our Memory #${imageNumber}`
   };
-}); */
+});
 
 const PhotoGallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<ImageType | null>(null);
+  const [windowWidth, setWindowWidth] = useState<number>(
+    typeof window !== 'undefined' ? window.innerWidth : 1200
+  );
   const modalRef = useRef<HTMLDivElement>(null);
+
+  // Function to get optimized image URL for thumbnails
+  const getOptimizedImageUrl = (url: string) => {
+    if (url.includes('picsum.photos')) {
+      return url.replace('/400/500', '/240/300'); // 60% of original size
+    }
+    return url;
+  };
+
+  // Function to get full quality image URL for modal
+  const getFullQualityImageUrl = (url: string) => {
+    if (url.includes('picsum.photos')) {
+      return url.replace('/240/300', '/800/1000'); // High quality for modal
+    }
+    return url;
+  };
 
   const handleImageClick = (image: ImageType) => {
     setSelectedImage(image);
@@ -34,6 +52,16 @@ const PhotoGallery: React.FC = () => {
     setSelectedImage(null);
     document.body.style.overflow = 'auto';
   };
+
+  // Handle window resize for responsive positioning
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Close modal when clicking outside the image or pressing escape
   useEffect(() => {
@@ -66,42 +94,73 @@ const PhotoGallery: React.FC = () => {
     target.src = 'placeholder.jpg';
   };
 
+  const calculatePosition = (index: number) => {
+    // Get responsive item size based on window width
+    const getItemSize = () => {
+      if (windowWidth <= 480) {
+        return 90;
+      } else if (windowWidth <= 768) {
+        return 110;
+      }
+      return 137.097;
+    };
+
+    const itemSize = getItemSize();
+    const row = Math.floor(index / 8);
+    const col = index % 8;
+    
+    return {
+      top: row * itemSize,
+      left: col * itemSize,
+      width: itemSize,
+      height: itemSize
+    };
+  };
+
   return (
     <div className="photo-gallery">
       <h2>Our Moments</h2>
-      <div className="gallery-rows">
-        {/* First row */}
-        <div className="gallery-row">
-          {sampleImages.slice(0, 10).map((item) => (
-            <div key={item.id} className="gallery-item" onClick={() => handleImageClick(item)}>
-              <img 
-                src={item.url} 
-                alt={item.alt}
-                loading="lazy"
-                onError={handleImageError}
-              />
-              <div className="image-overlay">
-                <span>{item.title}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* Second row */}
-        <div className="gallery-row">
-          {sampleImages.slice(10).map((item) => (
-            <div key={item.id} className="gallery-item" onClick={() => handleImageClick(item)}>
-              <img 
-                src={item.url} 
-                alt={item.alt}
-                loading="lazy"
-                onError={handleImageError}
-              />
-              <div className="image-overlay">
-                <span>{item.title}</span>
-              </div>
-            </div>
-          ))}
+      <div className="gallery-container">
+        <div className="gallery-wrapper">
+          <div className="gallery-grid-absolute">
+            {sampleImages.map((item, index) => {
+              const position = calculatePosition(index);
+              return (
+                <div 
+                  key={item.id} 
+                  className="gallery-item absolute"
+                  style={{
+                    top: `${position.top}px`,
+                    left: `${position.left}px`,
+                    width: `${position.width}px`,
+                    height: `${position.height}px`
+                  }}
+                  onClick={() => handleImageClick(item)}
+                >
+                  <a 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    draggable={false}
+                    className="select-none pointer-events-auto callout"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleImageClick(item);
+                    }}
+                  >
+                    <img 
+                      src={getOptimizedImageUrl(item.url)}
+                      alt={item.alt}
+                      width="300"
+                      draggable={false}
+                      loading="lazy"
+                      onError={handleImageError}
+                      className="bg-full w-full h-full object-cover block cursor-pointer gallery-item-img rounded-md select-none pointer-events-none"
+                    />
+                  </a>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 

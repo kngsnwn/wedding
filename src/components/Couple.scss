@@ -63,20 +63,22 @@
   .couple-names {
     display: flex;
     justify-content: center;
-    gap: 4rem;
+    align-items: center;
+    gap: 0.5rem;
     margin-top: 1.5rem;
-
-    .name {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    text-align: center;
 
     .label {
       font-size: 1.2rem;
-      color: #666;
-      margin-bottom: 0.5rem;
       font-family: 'Noto Sans KR', sans-serif;
+      
+      &.groom {
+        color: #3191e9;
+      }
+      
+      &.bride {
+        color: #e94e77;
+      }
     }
 
     .name-text {

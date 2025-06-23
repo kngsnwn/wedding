@@ -14,17 +14,6 @@
     text-align: center;
     position: relative;
     padding-bottom: 1rem;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, #3191e9, #e94e77);
-    }
   }
 
   .account-section {
@@ -33,6 +22,7 @@
     border-radius: 0.75rem;
     overflow: hidden;
     background: #fff;
+    transition: all 0.3s ease;
 
     .section-header {
       display: flex;
@@ -52,6 +42,18 @@
       svg {
         color: #666;
         font-size: 1rem;
+      }
+    }
+
+    .account-list {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    &.expanded {
+      .account-list {
+        max-height: 1000px; // 적절한 최대 높이 설정
       }
     }
   }
