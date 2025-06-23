@@ -4,13 +4,14 @@ import { getDatabase } from 'firebase/database';
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0UlTqYYT3sKI3LFehxEjeS2mh3ok5qJs",
-  authDomain: "wedding-f8487.firebaseapp.com",
-  projectId: "wedding-f8487",
-  storageBucket: "wedding-f8487.firebasestorage.app",
-  messagingSenderId: "991693774575",
-  appId: "1:991693774575:web:893a302c14131e9d32851a",
-  measurementId: "G-898LXP31TN"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 let app;
