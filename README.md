@@ -35,3 +35,17 @@ yarn build
   - `main.tsx` - Entry point
 - `/public` - Static assets
 - `/vite.config.ts` - Vite configuration
+
+## Deploy
+
+To publish the site to the `gh-pages` branch you can use the provided deploy
+script. Make sure the project is built and then run one of the following:
+
+```bash
+npm run deploy
+# or
+node deploy.js
+```
+
+This will push the contents of the `dist` folder to the `gh-pages` branch so
+the site is served via GitHub Pages.
