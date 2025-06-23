@@ -1,0 +1,201 @@
+.calendar-section {
+  padding: 4rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  position: relative;
+  z-index: 9;
+
+  .section-title {
+    font-family: 'Parisienne', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: #333;
+    font-weight: 400;
+  }
+
+  .wedding-date-info {
+    margin-bottom: 4rem;
+
+    .date-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      letter-spacing: normal;
+    }
+
+    .venue-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #333;
+      font-family: 'Noto Sans KR', sans-serif;
+      letter-spacing: normal;
+    }
+  }
+
+  .calendar-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    font-weight: 500;
+
+    .calendar-table {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
+      line-height: 1;
+
+      thead {
+        th {
+          padding: 1.5rem 0;
+          font-size: 1rem;
+          font-weight: 500;
+          color: #333;
+          font-family: 'Noto Sans KR', sans-serif;
+
+          &.sunday {
+            color: #ff6b6b;
+          }
+
+          div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+
+      tbody {
+        .calendar-cell {
+          padding: 0;
+          border: none;
+
+          .calendar-day {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 3rem;
+            aspect-ratio: 1;
+
+            .day-number {
+              font-size: 1rem;
+              color: #333;
+              z-index: 10;
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              height: 100%;
+              font-family: 'Noto Sans KR', sans-serif;
+
+              &.sunday {
+                color: #ff6b6b;
+              }
+
+              &.wedding-day {
+                color: #fff !important;
+                background: linear-gradient(135deg, #ff6b8b, #ff8ba3);
+                border-radius: 50%;
+                width: 2.5rem;
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                box-shadow: 0 4px 15px rgba(255, 107, 139, 0.3);
+              }
+            }
+
+            .wedding-time {
+              position: absolute;
+              top: 105%;
+              left: 50%;
+              transform: translateX(-50%);
+              font-size: 0.75rem;
+              font-weight: 600;
+              color: #333;
+              white-space: nowrap;
+              font-family: 'Noto Sans KR', sans-serif;
+              letter-spacing: -0.025em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .wedding-date-info {
+      margin-bottom: 2rem;
+
+      .date-text,
+      .venue-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    .calendar-container {
+      .calendar-table {
+        max-width: 100%;
+
+        thead th {
+          padding: 1rem 0;
+          font-size: 0.9rem;
+        }
+
+        tbody .calendar-cell .calendar-day {
+          min-height: 2.5rem;
+
+          .day-number {
+            font-size: 0.9rem;
+
+            &.wedding-day {
+              width: 2rem;
+              height: 2rem;
+            }
+          }
+
+          .wedding-time {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% { 
+    transform: scale(1); 
+    box-shadow: 0 4px 15px rgba(255, 107, 139, 0.3);
+  }
+  50% { 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.4);
+  }
+  100% { 
+    transform: scale(1); 
+    box-shadow: 0 4px 15px rgba(255, 107, 139, 0.3);
+  }
+}
+
+.calendar-section .calendar-container .calendar-table tbody .calendar-cell .calendar-day .day-number.wedding-day {
+  animation: pulse 2s infinite;
+}

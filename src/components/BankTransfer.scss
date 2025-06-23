@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+.bank-transfer-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  font-family: 'Noto Sans KR', sans-serif;
+  padding: 0 1rem;
+
+  .section-title {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0 0 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .account-section {
+    margin-bottom: 1.5rem;
+    border: 1px solid #eaeaea;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: #fff;
+    transition: all 0.3s ease;
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      background: #f9f9f9;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background: #f0f0f0;
+      }
+
+      svg {
+        color: #666;
+        font-size: 1rem;
+      }
+    }
+
+    .account-list {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    &.expanded {
+      .account-list {
+        max-height: 1000px; // 적절한 최대 높이 설정
+      }
+    }
+  }
+
+  .account-list {
+    .account-item {
+      border-top: 1px dashed #eaeaea;
+      padding: 1rem 1.5rem;
+
+      .account-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.4rem;
+
+        .account-relation {
+          font-size: 0.9rem;
+          color: #666;
+          margin-right: 1rem;
+        }
+
+        .account-name {
+          font-weight: 600;
+          color: #333;
+        }
+      }
+
+      .account-details {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+        width: 100%;
+        margin-top: 0.2rem;
+
+        .bank-name {
+          font-size: 0.9rem;
+          color: #666;
+          min-width: 50px;
+          white-space: nowrap;
+        }
+
+        .account-number {
+          font-size: 1rem;
+          font-weight: 500;
+          color: #333;
+          letter-spacing: 0.5px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          flex: 1;
+        }
+
+        .copy-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: #f5f5f5;
+          border: 1px solid #e0e0e0;
+          border-radius: 4px;
+          padding: 0.3rem 0.6rem;
+          font-size: 0.8rem;
+          color: #555;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-family: 'Noto Sans KR', sans-serif;
+          white-space: nowrap;
+          min-width: 60px;
+          margin-left: auto;
+          flex-shrink: 0;
+
+          &:hover {
+            background: #e8f5e9;
+            border-color: #c8e6c9;
+            color: #2e7d32;
+          }
+
+          &.copied {
+            background: #e8f5e9;
+            border-color: #c8e6c9;
+            color: #2e7d32;
+            min-width: 75px;
+          }
+
+          .icon {
+            font-size: 0.8rem;
+            margin-right: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  .closing-message {
+    text-align: center;
+    margin: 2.5rem 0 1rem;
+    padding: 0 1rem;
+    color: #666;
+    
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ddd, transparent);
+      margin: 0 auto 1.5rem;
+      max-width: 300px;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #333;
+      font-weight: 400;
+    }
+    
+    .signature {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.2rem;
+      color: #333;
+      margin-top: 1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 0 0.75rem;
+
+    .account-section {
+      .section-header {
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+      }
+    }
+
+    .account-list {
+      .account-item {
+        padding: 1.25rem 1rem;
+
+        .account-details {
+          flex-direction: row;
+          align-items: center;
+          gap: 0.5rem;
+
+          .bank-name {
+            min-width: 40px;
+            font-size: 0.85rem;
+          }
+
+          .account-number {
+            font-size: 0.95rem;
+          }
+
+          .copy-button {
+            width: auto;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            min-width: 55px;
+            
+            &.copied {
+              min-width: 65px;
+            }
+          }
+        }
+      }
+    }
+    
+    .closing-message {
+      margin: 2rem 0 1rem;
+      
+      p {
+        font-size: 1rem;
+      }
+      
+      .signature {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

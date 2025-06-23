@@ -1,0 +1,29 @@
+{
+  "rules": {
+    "guestbook": {
+      ".read": true,
+      ".write": true,
+      "$entryId": {
+        ".validate": "newData.hasChildren(['name', 'message', 'date', 'timestamp']) && newData.child('name').isString() && newData.child('message').isString() && newData.child('date').isString() && newData.child('timestamp').isNumber()",
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 20"
+        },
+        "message": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 200"
+        },
+        "date": {
+          ".validate": "newData.isString()"
+        },
+        "timestamp": {
+          ".validate": "newData.isNumber()"
+        },
+        "password": {
+          ".validate": "newData.isString() && newData.val().length <= 20"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}

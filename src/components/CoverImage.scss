@@ -1,0 +1,195 @@
+.cover-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  z-index: 0;
+
+  .cover-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 3;
+
+    .effect-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%);
+    }
+  }
+
+  .cover-names {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+
+    .name-left,
+    .name-right {
+      font-family: 'MinionProDisplay-Bold', sans-serif;
+      font-size: 0.8rem;
+      line-height: 1rem;
+      letter-spacing: 0;
+      color: rgb(119, 119, 119);
+      break-keep: break-word;
+      white-space: break-spaces;
+    }
+
+    .name-left {
+      text-align: left;
+    }
+
+    .name-right {
+      text-align: right;
+    }
+  }
+
+  .cover-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding-bottom: 4rem;
+    text-align: center;
+
+    .main-title {
+      font-family: 'script', cursive;
+      font-size: 4rem;
+      line-height: 0.6;
+      color: white;
+      transform: rotate(-10deg);
+      padding-bottom: 4rem;
+      text-shadow: 1px 1px 2px transparent, 1px 1px 4px transparent;
+      margin-bottom: 2rem;
+    }
+
+    .wedding-date {
+      font-family: 'MinionProDisplay-Bold', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      letter-spacing: 0;
+      color: rgb(119, 119, 119);
+      padding-bottom: 1rem;
+    }
+
+    .wedding-message {
+      font-family: 'MinionProDisplay-Medium', sans-serif;
+      font-size: 0.6rem;
+      line-height: 1.2;
+      letter-spacing: 0;
+      color: rgb(119, 119, 119);
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  .cover-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    .noise-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.1;
+      background-image: url('https://cdn2.makedear.com/homepage/img/main/assets/noise.png');
+      z-index: 1;
+    }
+
+    .cover-main-image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      user-select: none;
+      pointer-events: none;
+      -webkit-filter: brightness(105%) saturate(90%) sepia(6%) grayscale(10%) invert(10%);
+      filter: brightness(105%) saturate(90%) sepia(6%) grayscale(10%) invert(10%);
+    }
+
+    .blend-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      mix-blend-mode: multiply;
+      opacity: 0.1;
+      background: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cover-names {
+      padding: 1rem;
+
+      .name-left,
+      .name-right {
+        font-size: 0.7rem;
+      }
+    }
+
+    .cover-content {
+      padding-bottom: 2rem;
+
+      .main-title {
+        font-size: 2.5rem;
+        padding-bottom: 2rem;
+      }
+
+      .wedding-date {
+        font-size: 1rem;
+      }
+
+      .wedding-message {
+        font-size: 0.5rem;
+        padding: 0 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .cover-content {
+      .main-title {
+        font-size: 6rem;
+      }
+
+      .wedding-date {
+        font-size: 1.4rem;
+      }
+
+      .wedding-message {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}

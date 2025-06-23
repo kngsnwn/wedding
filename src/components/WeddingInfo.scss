@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+.wedding-info-section {
+  padding: 3rem 1.5rem;
+  background: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  font-family: 'Nanum Myeongjo', serif;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+
+  h2, h3 {
+    color: #333;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    color: #555;
+    margin-top: 2rem;
+  }
+
+  .wedding-details {
+    margin-bottom: 2rem;
+    
+    .info-item {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      
+      h3 {
+        font-size: 1.2rem;
+        color: #888;
+        margin: 0 0 0.5rem;
+      }
+      
+      p {
+        margin: 0.2rem 0;
+        color: #333;
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .contacts-section {
+    margin: 3rem 0 1.5rem;
+    background: #f8f5f2;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    
+    .contacts-title {
+      font-size: 1.8rem;
+      color: #5d4037;
+      text-align: center;
+      margin: 0 0 0.5rem;
+      font-weight: 600;
+    }
+    
+    .contacts-subtitle {
+      color: #8d6e63;
+      text-align: center;
+      margin: 0 0 2rem;
+      font-size: 1rem;
+    }
+    
+    .contacts-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+      
+      .contact-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        
+        @media (max-width: 480px) {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+      }
+      
+      .contact-info {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border: 1px solid #f0e6e0;
+        
+        &.active {
+          background: #fff9f5;
+          box-shadow: 0 4px 12px rgba(237, 108, 2, 0.1);
+          border-color: #ffd8b9;
+        }
+        
+        .contact-header {
+          display: flex;
+          align-items: center;
+          padding: 1.2rem 1.2rem;
+          cursor: pointer;
+          user-select: none;
+          
+          .emoji {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+            min-width: 36px;
+            text-align: center;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+          }
+          
+          .name {
+            flex: 1;
+            font-weight: 600;
+            color: #4e342e;
+            font-size: 1.05rem;
+          }
+          
+          .deceased {
+            color: #d32f2f;
+            font-size: 0.9rem;
+            margin: 0 0.5rem;
+            font-weight: 500;
+          }
+          
+          .toggle {
+            color: #a1887f;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            margin: -0.5rem -0.5rem -0.5rem 0.5rem;
+            
+            &:hover {
+              color: #5d4037;
+            }
+          }
+        }
+        
+        .phone {
+          display: block;
+          padding: 0 1.2rem 1.2rem 4.8rem;
+          color: #1976d2;
+          text-decoration: none;
+          font-size: 1rem;
+          word-break: break-all;
+          font-weight: 500;
+          transition: color 0.2s ease;
+          
+          &:hover {
+            color: #0d47a1;
+            text-decoration: underline;
+          }
+        }
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+      }
+    }
+  }
+
+  .map-container {
+    margin: 3rem 0;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    
+    .navigation-buttons.custom-navi-buttons {
+      display: flex;
+      justify-content: center;
+      margin: 1.5rem 0;
+      width: 100%;
+    }
+    .navi-btn-wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      width: 100%;
+      max-width: 420px;
+      background: #faf9f7;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px #0001;
+      border: 1px solid #eee;
+      overflow: hidden;
+    }
+    .navi-btn {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4em;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.6em 0.2em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .navi-btn:hover {
+      background: #f5f5f5;
+    }
+    .navi-divider {
+      width: 1px;
+      background: #eee;
+      margin: 0.3em 0;
+      align-self: stretch;
+    }
+    .navi-icon-sm {
+      width: 1.2em;
+      height: 1.2em;
+      margin-right: 0.3em;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .navigation-buttons {
+    .navi-button, a.navi-button {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem 0.3rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      font-family: 'Noto Sans KR', sans-serif;
+      white-space: nowrap;
+      height: 36px;
+    }
+    .navi-icon {
+      margin-right: 8px;
+      font-size: 1.2em;
+    }
+    .navi-button:hover, a.navi-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .navi-button.naver, a.navi-button.naver {
+      background-color: #03c75a;
+      color: white;
+    }
+    .navi-button.kakao, a.navi-button.kakao {
+      background-color: #fee500;
+      color: #3c1e1e;
+    }
+    .navi-button.tmap, a.navi-button.tmap {
+      background-color: #00b4f0;
+      color: white;
+    }
+  }
+    
+    h3 {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .map-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+    }
+    
+    .address-info {
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+      
+      strong {
+        color: #333;
+      }
+      
+      .contact-header {
+        display: flex;
+        align-items: center;
+        padding: 1.2rem 1.2rem;
+        cursor: pointer;
+        user-select: none;
+        
+        .emoji {
+          font-size: 1.8rem;
+          margin-right: 1rem;
+          min-width: 36px;
+          text-align: center;
+          filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+        }
+        
+        .name {
+          flex: 1;
+          font-weight: 600;
+          color: #4e342e;
+          font-size: 1.05rem;
+        }
+        
+        .deceased {
+          color: #d32f2f;
+          font-size: 0.9rem;
+          margin: 0 0.5rem;
+          font-weight: 500;
+        }
+        
+        .toggle {
+          color: #a1887f;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          padding: 0.5rem;
+          margin: -0.5rem -0.5rem -0.5rem 0.5rem;
+          
+          &:hover {
+            color: #5d4037;
+          }
+        }
+      }
+      
+      .phone {
+        display: block;
+        padding: 0 1.2rem 1.2rem 4.8rem;
+        color: #1976d2;
+        text-decoration: none;
+        font-size: 1rem;
+        word-break: break-all;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        
+        &:hover {
+          color: #0d47a1;
+          text-decoration: underline;
+        }
+      }
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+    }
+    
+    .transportation-info {
+      margin-top: 2.5rem;
+      text-align: left;
+      background: #ffffff;
+      padding: 2rem 1.8rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      font-family: 'Noto Sans KR', sans-serif;
+      
+      h4 {
+        font-size: 2.0rem;
+        color: #2c3e50;
+        margin: 0 0 1.5rem 0;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #f0f0f0;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        text-align: center;
+      }
+      
+      .transportation-section {
+        margin-bottom: 2rem;
+        background: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        h5 {
+          font-size: 1.2rem;
+          color: #2c3e50;
+          margin: 0 0 1rem 0;
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          font-weight: 600;
+          
+          &::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+        
+        ///* Subway icon */
+        //&:nth-child(2) h5::before {
+        //  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231e88e5'%3E%3Cpath d='M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm5.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6h-5V6h5v5z'/%3E%3C/svg%3E");
+        //}
+        
+        ///* Bus icon */
+        //&:nth-child(3) h5::before {
+        //  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%24%7Bprops.color%7D'%3E%3Cpath d='M18 11H6V6h12v5zM16.5 17c-.83 0-1.5-.67-1.5-1.5S15.67 14 16.5 14s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM7 14c0 .83-.67 1.5-1.5 1.5S4 14.83 4 14s.67-1.5 1.5-1.5S7 13.17 7 14zm11-8h-3V3H9v3H6c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5h6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5H18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z'/%3E%3C/svg%3E");
+        //}
+        
+        ///* Car icon */
+        //&:nth-child(4) h5::before {
+        //  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%24%7Bprops.color%7D'%3E%3Cpath d='M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.08 3.11H5.77L6.85 7zM19 17H5v-5h14v5z'/%3E%3Cpath d='M7.5 16c-.83 0-1.5-.67-1.5-1.5S6.67 13 7.5 13s1.5.67 1.5 1.5S8.33 16 7.5 16zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z'/%3E%3C/svg%3E");
+        //}
+        
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          
+          li {
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            
+            strong {
+              color: #333;
+              font-weight: 600;
+              margin-right: 0.5rem;
+            }
+            
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+      
+      @media (max-width: 600px) {
+        padding: 1.2rem;
+        
+        h4 {
+          font-size: 1.2rem;
+        }
+        
+        .transportation-section {
+          h5 {
+            font-size: 1rem;
+          }
+          
+          ul li {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .wedding-info-section {
+      padding: 2rem 1rem;
+      margin: 0 1rem;
+    
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .parents-info {
+        .parents-groups {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        
+        .parents-contacts {
+          flex-direction: column;
+        }
+        
+        .parent-contact {
+          max-width: none;
+        }
+      }
+      
+      .map-buttons {
+        flex-direction: column;
+        align-items: center;
+        
+        .map-button {
+          width: 200px;
+        }
+      }
+    }
+  }

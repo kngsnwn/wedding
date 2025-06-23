@@ -1,0 +1,220 @@
+// 폰트는 App.scss에서 전역으로 로드됨
+
+.dday-section {
+  position: relative;
+  background: #ffffff;
+  padding: 4rem 0;
+  transform: scale(1);
+  z-index: 10;
+  overflow: hidden;
+  user-select: none;
+
+  .wavebg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(-96%);
+    z-index: 1;
+    display: none; // Hidden as per original HTML
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .opacity-50 {
+      opacity: 0.5;
+    }
+  }
+
+  .dday-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    animation: fadeInUp 1s ease forwards;
+
+    .countdown-container {
+      padding: 0.25rem 0 3rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-weight: 300;
+      text-align: center;
+      letter-spacing: normal;
+
+      .ddaybox {
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 5.3rem;
+        max-height: 6rem;
+        border-radius: 0.5rem;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .counttext {
+          display: flex;
+          flex-direction: column;
+          width: 10vw;
+          min-width: 3rem;
+
+          .count-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+          }
+
+          .count-label {
+            font-size: 0.75rem;
+            font-family: 'Cormorant Infant', serif;
+            font-weight: 500;
+            color: #666;
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .colon {
+        font-size: 0.875rem;
+        margin: 0 1rem;
+        color: #666;
+        font-weight: 400;
+      }
+    }
+
+    .dday-message {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      word-break: break-all;
+      white-space: pre-wrap;
+      animation: fadeInUp 1s ease forwards;
+
+      p {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #444;
+        margin: 0;
+        font-weight: 400;
+
+        .heart {
+          color: #d08c95;
+          font-size: 1.2rem;
+        }
+
+        .highlight {
+          color: #d08c95;
+          font-weight: 700;
+        }
+
+        strong {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+
+    .dday-content {
+      .countdown-container {
+        padding: 0.25rem 0 2rem 0;
+
+        .ddaybox {
+          padding: 0.75rem;
+          max-width: 4.5rem;
+          max-height: 5rem;
+
+          .counttext {
+            width: 12vw;
+            min-width: 2.5rem;
+
+            .count-number {
+              font-size: 1.25rem;
+            }
+
+            .count-label {
+              font-size: 0.7rem;
+            }
+          }
+        }
+
+        .colon {
+          font-size: 0.75rem;
+          margin: 0 0.75rem;
+        }
+      }
+
+      .dday-message {
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+
+    .dday-content {
+      .countdown-container {
+        padding: 0.25rem 0 1.5rem 0;
+
+        .ddaybox {
+          padding: 0.5rem;
+          max-width: 3.8rem;
+          max-height: 4.5rem;
+
+          .counttext {
+            width: 15vw;
+            min-width: 2rem;
+
+            .count-number {
+              font-size: 1.1rem;
+            }
+
+            .count-label {
+              font-size: 0.65rem;
+            }
+          }
+        }
+
+        .colon {
+          font-size: 0.7rem;
+          margin: 0 0.5rem;
+        }
+      }
+
+      .dday-message {
+        p {
+          font-size: 0.95rem;
+          padding: 0 1rem;
+        }
+      }
+    }
+  }
+}

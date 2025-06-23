@@ -1,0 +1,139 @@
+.couple-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+
+  h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    color: #333;
+    position: relative;
+    padding-bottom: 1rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #3191e9, #e94e77);
+    }
+  }
+
+  .portrait-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 0 20px;
+  }
+
+  .portrait-image {
+    flex: 1;
+    overflow: hidden;
+    aspect-ratio: 1 / 1.35;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    .portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  .heart-icon {
+    margin: 0 1rem;
+    color: #ff6b8b;
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+
+  .couple-names {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+
+    .label {
+      font-size: 1.2rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      
+      &.groom {
+        color: #3191e9;
+      }
+      
+      &.bride {
+        color: #e94e77;
+      }
+    }
+
+    .name-text {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #333;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .portrait-area {
+      padding: 0 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .heart-icon {
+      margin: 0 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .couple-names {
+      gap: 2rem;
+      
+      .label {
+        font-size: 1.1rem;
+      }
+      
+      .name-text {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

@@ -1,0 +1,26 @@
+.closing-message {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+
+  .divider {
+    width: 50px;
+    height: 1px;
+    background-color: #ddd;
+    margin: 0 auto 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .signature {
+    font-size: 0.9rem;
+    color: #999;
+    font-style: italic;
+  }
+}

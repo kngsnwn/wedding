@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Firebase 방명록 설정 가이드 | wedding</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Firebase 방명록 설정 가이드" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://kngsnwn.github.io/wedding/FIREBASE_SETUP.html" />
+<meta property="og:url" content="https://kngsnwn.github.io/wedding/FIREBASE_SETUP.html" />
+<meta property="og:site_name" content="wedding" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Firebase 방명록 설정 가이드" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Firebase 방명록 설정 가이드","url":"https://kngsnwn.github.io/wedding/FIREBASE_SETUP.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/wedding/assets/css/style.css?v=55c9989ecc7156913caf61fa0816c11e7d9644f4">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/wedding/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://kngsnwn.github.io/wedding/">wedding</a></h1>
+      
+
+      <h1 id="firebase-방명록-설정-가이드">Firebase 방명록 설정 가이드</h1>
+
+<h2 id="1-firebase-프로젝트-생성">1. Firebase 프로젝트 생성</h2>
+
+<ol>
+  <li><a href="https://console.firebase.google.com/">Firebase 콘솔</a>에 접속</li>
+  <li>“프로젝트 추가” 클릭</li>
+  <li>프로젝트 이름 입력 (예: wedding-guestbook)</li>
+  <li>Google Analytics 설정 (선택사항)</li>
+</ol>
+
+<h2 id="2-realtime-database-설정">2. Realtime Database 설정</h2>
+
+<ol>
+  <li>Firebase 콘솔에서 “Realtime Database” 선택</li>
+  <li>“데이터베이스 만들기” 클릭</li>
+  <li>보안 규칙 모드 선택:
+    <ul>
+      <li>테스트 모드로 시작 (나중에 보안 규칙 적용)</li>
+    </ul>
+  </li>
+  <li>위치 선택 (asia-southeast1 권장)</li>
+</ol>
+
+<h2 id="3-웹-앱-설정">3. 웹 앱 설정</h2>
+
+<ol>
+  <li>Firebase 콘솔에서 “프로젝트 설정” &gt; “일반” 탭</li>
+  <li>“앱” 섹션에서 웹 아이콘(&lt;/&gt;)클릭</li>
+  <li>앱 닉네임 입력</li>
+  <li>Firebase SDK 설정 코드 복사</li>
+</ol>
+
+<h2 id="4-환경-변수-설정">4. 환경 변수 설정</h2>
+
+<p><code class="language-plaintext highlighter-rouge">.env</code> 파일에서 다음 값들을 실제 Firebase 설정값으로 교체:</p>
+
+<pre><code class="language-env">VITE_FIREBASE_API_KEY=your-actual-api-key
+VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+VITE_FIREBASE_DATABASE_URL=https://your-project-default-rtdb.asia-southeast1.firebasedatabase.app/
+VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+VITE_FIREBASE_APP_ID=your-app-id
+</code></pre>
+
+<p><strong>주의:</strong> Vite 환경에서는 <code class="language-plaintext highlighter-rouge">VITE_</code> 접두사가 필요합니다.</p>
+
+<h2 id="5-보안-규칙-적용">5. 보안 규칙 적용</h2>
+
+<ol>
+  <li>Firebase 콘솔에서 Realtime Database &gt; “규칙” 탭</li>
+  <li><code class="language-plaintext highlighter-rouge">database.rules.json</code> 파일의 내용을 복사하여 붙여넣기</li>
+  <li>“게시” 클릭</li>
+</ol>
+
+<h2 id="6-테스트">6. 테스트</h2>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">npm run dev</code> 실행</li>
+  <li>방명록 섹션에서 글쓰기 테스트</li>
+  <li>Firebase 콘솔에서 데이터 확인</li>
+</ol>
+
+<h2 id="주요-기능">주요 기능</h2>
+
+<ul>
+  <li>✅ 실시간 데이터 동기화</li>
+  <li>✅ 글 작성/수정/삭제</li>
+  <li>✅ 비밀번호 보호</li>
+  <li>✅ 입력 길이 제한 (이름 20자, 메시지 200자)</li>
+  <li>✅ 데이터 유효성 검증</li>
+</ul>
+
+<h2 id="문제-해결">문제 해결</h2>
+
+<h3 id="firebase-연결-오류">Firebase 연결 오류</h3>
+<ul>
+  <li>환경 변수가 올바르게 설정되었는지 확인</li>
+  <li>Firebase 프로젝트가 활성화되어 있는지 확인</li>
+</ul>
+
+<h3 id="데이터-읽기쓰기-오류">데이터 읽기/쓰기 오류</h3>
+<ul>
+  <li>보안 규칙이 올바르게 설정되었는지 확인</li>
+  <li>Realtime Database가 활성화되어 있는지 확인</li>
+</ul>
+
+<h3 id="빌드-오류">빌드 오류</h3>
+<ul>
+  <li>Firebase SDK 버전 호환성 확인</li>
+  <li><code class="language-plaintext highlighter-rouge">npm install</code> 재실행</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,206 @@
+.share-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+  padding: 1rem;
+
+  .share-modal-content {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    font-family: 'Noto Sans KR', sans-serif;
+    
+    .share-content {
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .share-grid {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+
+      .share-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0.5rem;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+
+        &:hover {
+          background: #e9ecef;
+          transform: translateY(-3px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-icon {
+          width: 4rem;
+          height: 4rem;
+          margin: 0 auto;
+          background: white;
+          border-radius: 12px;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid #dee2e6;
+          margin-bottom: 0.75rem;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+          svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            color: #495057;
+          }
+        }
+
+        .share-label {
+          font-size: 0.875rem;
+          color: #495057;
+          font-weight: 500;
+          font-family: 'Noto Sans KR', sans-serif;
+        }
+      }
+    }
+
+    .modal-footer {
+      margin-top: auto;
+      background: white;
+      display: flex;
+      width: 100%;
+      padding: 0 2rem 2rem 2rem;
+
+      .close-button {
+        width: 100%;
+        padding: 1rem;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #495057;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: 'Noto Sans KR', sans-serif;
+
+        &:hover {
+          background: #e9ecef;
+          color: #212529;
+          transform: translateY(-1px);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+
+    .share-modal-content {
+      .share-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        padding: 1.5rem;
+
+        .share-item {
+          padding: 1.25rem 0.5rem;
+
+          .share-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+
+            svg {
+              width: 2.25rem;
+              height: 2.25rem;
+            }
+          }
+
+          .share-label {
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      .modal-footer {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+
+        .close-button {
+          padding: 0.875rem;
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .share-modal-content {
+      .share-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        padding: 1rem;
+
+        .share-item {
+          padding: 1rem 0.25rem;
+
+          .share-icon {
+            width: 3rem;
+            height: 3rem;
+            margin-bottom: 0.5rem;
+
+            svg {
+              width: 2rem;
+              height: 2rem;
+            }
+          }
+
+          .share-label {
+            font-size: 0.75rem;
+          }
+        }
+      }
+
+      .modal-footer {
+        padding: 0 1rem 1rem 1rem;
+
+        .close-button {
+          padding: 0.75rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
