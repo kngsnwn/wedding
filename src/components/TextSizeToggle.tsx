@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FaTextHeight } from 'react-icons/fa';
-import './TextSizeToggle.scss';
 
 const TextSizeToggle: React.FC = () => {
   const [isLargeText, setIsLargeText] = useState(false);
 
   useEffect(() => {
+    // Check for saved preference
     const savedPreference = localStorage.getItem('textSizePreference');
     if (savedPreference === 'large') {
       setIsLargeText(true);
@@ -30,10 +30,10 @@ const TextSizeToggle: React.FC = () => {
     <button 
       onClick={toggleTextSize}
       className="text-size-toggle"
-      aria-label={isLargeText ? '일반 글씨' : '큰 글씨'}
+      aria-label={isLargeText ? '일반 글씨 크기로 보기' : '큰 글씨로 보기'}
     >
-      <FaTextHeight className="text-icon" />
-      <span>{isLargeText ? '일반 글씨' : '큰 글씨'}</span>
+      <FaTextHeight />
+      <span>큰 글씨</span>
     </button>
   );
 };
