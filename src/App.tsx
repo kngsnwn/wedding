@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Couple from './components/Couple';
-import WeddingInfo from './components/WeddingInfo';
-import DDay from './components/DDay';
+// import WeddingInfo from './components/WeddingInfo';
+// import DDay from './components/DDay';
 import Calendar from './components/Calendar';
 import PhotoGallery from './components/PhotoGallery';
 import Location from './components/Location';
@@ -41,9 +41,9 @@ function App() {
         {/*<div className="section">*/}
         {/*  <WeddingInfo />*/}
         {/*</div>*/}
-        <div className="section">
-          <DDay />
-        </div>
+        {/*<div className="section">*/}
+        {/*  <DDay />*/}
+        {/*</div>*/}
         <div className="section">
           <Calendar />
         </div>

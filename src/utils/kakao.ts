@@ -61,18 +61,18 @@ export const shareToKakao = (): void => {
       content: {
         title: '순원 ♥ 순투 결혼식에 초대합니다',
         description: '2026년 1월 10일 오전 11시\n영등포 더컨벤션 2층\n\n저희의 새로운 시작을 함께해주세요 💕',
-        imageUrl: 'https://soonwonkong.github.io/wedding/images/cover.jpg',
+        imageUrl: 'https://kngsnwn.github.io/wedding/images/cover.jpg',
         link: {
-          mobileWebUrl: 'https://soonwonkong.github.io/wedding',
-          webUrl: 'https://soonwonkong.github.io/wedding'
+          mobileWebUrl: 'https://kngsnwn.github.io/wedding',
+          webUrl: 'https://kngsnwn.github.io/wedding'
         }
       },
       buttons: [
         {
           title: '청첩장 보기',
           link: {
-            mobileWebUrl: 'https://soonwonkong.github.io/wedding',
-            webUrl: 'https://soonwonkong.github.io/wedding'
+            mobileWebUrl: 'https://kngsnwn.github.io/wedding',
+            webUrl: 'https://kngsnwn.github.io/wedding'
           }
         }
       ]
@@ -90,7 +90,7 @@ export const shareToWeb = (): void => {
     navigator.share({
       title: '순원 ♥ 순투 결혼식에 초대합니다',
       text: '2026년 1월 10일 오전 11시, 영등포 더컨벤션에서 새로운 시작을 함께해주세요',
-      url: 'https://soonwonkong.github.io/wedding'
+      url: 'https://kngsnwn.github.io/wedding'
     }).catch((error) => {
       console.error('Web Share failed:', error);
       copyToClipboard();
@@ -101,7 +101,7 @@ export const shareToWeb = (): void => {
 };
 
 export const copyToClipboard = (): void => {
-  const url = 'https://soonwonkong.github.io/wedding';
+  const url = 'https://kngsnwn.github.io/wedding';
   
   if (navigator.clipboard) {
     navigator.clipboard.writeText(url).then(() => {

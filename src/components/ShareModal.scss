@@ -15,9 +15,9 @@
 
   .share-modal-content {
     background: white;
-    border-radius: 16px;
+    border-radius: 24px;
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     max-height: 90vh;
     position: relative;
     margin: auto;
@@ -26,9 +26,43 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     font-family: 'Noto Sans KR', sans-serif;
     
+    .close-button-x {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: #6c757d;
+      }
+
+      &:hover {
+        background: #e9ecef;
+        border-color: #dee2e6;
+        transform: scale(1.1);
+        
+        svg {
+          color: #495057;
+        }
+      }
+    }
+    
     .share-content {
       overflow-y: auto;
       flex: 1;
+      border-radius: 24px;
     }
 
     .share-grid {
@@ -85,34 +119,6 @@
       }
     }
 
-    .modal-footer {
-      margin-top: auto;
-      background: white;
-      display: flex;
-      width: 100%;
-      padding: 0 2rem 2rem 2rem;
-
-      .close-button {
-        width: 100%;
-        padding: 1rem;
-        background: #f8f9fa;
-        border: 1px solid #e9ecef;
-        border-radius: 12px;
-        font-size: 1rem;
-        font-weight: 600;
-        color: #495057;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: 'Noto Sans KR', sans-serif;
-
-        &:hover {
-          background: #e9ecef;
-          color: #212529;
-          transform: translateY(-1px);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-      }
-    }
 
   }
 
@@ -144,14 +150,6 @@
         }
       }
 
-      .modal-footer {
-        padding: 0 1.5rem 1.5rem 1.5rem;
-
-        .close-button {
-          padding: 0.875rem;
-          font-size: 0.95rem;
-        }
-      }
     }
   }
 
@@ -182,14 +180,6 @@
         }
       }
 
-      .modal-footer {
-        padding: 0 1rem 1rem 1rem;
-
-        .close-button {
-          padding: 0.75rem;
-          font-size: 0.9rem;
-        }
-      }
     }
   }
 }

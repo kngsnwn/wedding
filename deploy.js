@@ -10,7 +10,7 @@ const options = {
   repo: 'https://github.com/kngsnwn/wedding.git',
   message: 'Deploy to GitHub Pages',
   user: {
-    name: 'soonwonkong',
+    name: 'kngsnwn',
     email: 'your.email@example.com' // Replace with your GitHub email
   },
   // Add this to handle long paths on Windows

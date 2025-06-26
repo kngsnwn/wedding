@@ -23,7 +23,8 @@
       "Bash(npx tailwindcss init:*)",
       "Bash(npm uninstall:*)",
       "Bash(npm run lint)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "WebFetch(domain:developers.kakao.com)"
     ],
     "deny": []
   }

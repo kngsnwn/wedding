@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { shareToKakao, shareToWeb, copyToClipboard, initKakao } from '../utils/kakao';
+import { addToKakaoCalendar } from '../utils/kakaoCalendar';
 import './ShareModal.scss';
 
 interface ShareModalProps {
@@ -19,92 +20,20 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
 
   const currentUrl = window.location.href;
 
-  const createKakaoCalendarEvent = async () => {
+  const shareKakaoCalendar = async () => {
+    if (!window.Kakao) {
+      alert('카카오 SDK가 로드되지 않았습니다.');
+      return;
+    }
+
     try {
-      // 카카오 로그인이 필요하다는 안내
-      const confirmed = confirm(
-        '카카오톡 캘린더에 일정을 등록하려면 카카오 로그인이 필요합니다.\n' +
-        '로그인 페이지로 이동하시겠습니까?'
-      );
-      
-      if (!confirmed) return;
-
-      // 카카오 OAuth URL (실제 구현 시 카카오 개발자 콘솔에서 발급받은 클라이언트 ID 사용)
-      const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_CLIENT_ID}&redirect_uri=${encodeURIComponent(window.location.origin + '/auth/kakao')}&response_type=code&scope=talk_calendar`;
-      
-      // 팝업으로 카카오 로그인 창 열기
-      const popup = window.open(
-        kakaoAuthUrl,
-        'kakaoLogin',
-        'width=500,height=600,scrollbars=yes,resizable=yes'
-      );
-
-      // 팝업 창에서 인증 완료 후 메시지 받기
-      const handleMessage = (event: MessageEvent) => {
-        if (event.origin !== window.location.origin) return;
-        
-        if (event.data.type === 'KAKAO_AUTH_SUCCESS') {
-          const accessToken = event.data.accessToken;
-          registerWeddingEvent(accessToken);
-          popup?.close();
-          window.removeEventListener('message', handleMessage);
-        }
-      };
-
-      window.addEventListener('message', handleMessage);
-
+      await addToKakaoCalendar();
     } catch (error) {
-      console.error('카카오 캘린더 일정 등록 오류:', error);
-      alert('일정 등록 중 오류가 발생했습니다.');
+      console.error('카카오 캘린더 등록 실패:', error);
+      alert('카카오 캘린더 등록 중 오류가 발생했습니다. 다시 시도해주세요.');
     }
   };
 
-  const registerWeddingEvent = async (accessToken: string) => {
-    try {
-      const eventData = {
-        title: "순원 ♥ 순투 결혼식",
-        time: {
-          start_at: "2026-01-10T02:00:00Z", // 2026년 1월 10일 오전 11시 (UTC)
-          end_at: "2026-01-10T05:00:00Z",   // 2026년 1월 10일 오후 2시 (UTC)
-          time_zone: "Asia/Seoul",
-          all_day: false,
-          lunar: false
-        },
-        description: "저희의 소중한 날에 함께해 주세요.\n\n" + currentUrl,
-        location: {
-          name: "영등포 더컨벤션",
-          address: "서울 영등포구 국회대로 38길 2",
-          latitude: 37.517331,
-          longitude: 126.903379
-        },
-        reminders: [1440, 60], // 1일 전, 1시간 전 알림
-        color: "RED"
-      };
-
-      const response = await fetch('https://kapi.kakao.com/v2/api/calendar/create/event', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          calendar_id: 'primary',
-          event: JSON.stringify(eventData)
-        })
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        alert('결혼식 일정이 카카오톡 캘린더에 성공적으로 등록되었습니다!');
-        console.log('일정 등록 성공:', result);
-      } else {
-        throw new Error('일정 등록 실패');
-      }
-    } catch (error) {
-      console.error('일정 등록 오류:', error);
-      alert('일정 등록에 실패했습니다. 다시 시도해주세요.');
-    }
-  };
 
   const handleShare = (platform: string) => {
     switch (platform) {
@@ -123,6 +52,11 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
   return (
     <div className="share-modal-overlay" onClick={onClose}>
       <div className="share-modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="close-button-x" onClick={onClose}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
         <div className="share-content">
           <div className="share-grid">
             <div className="share-item" onClick={() => handleShare('kakao')}>
@@ -146,21 +80,15 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
               <div className="share-label">공유하기</div>
             </div>
 
-            <div className="share-item" onClick={createKakaoCalendarEvent}>
+            <div className="share-item" onClick={shareKakaoCalendar}>
               <div className="share-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-12">
                   <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zm0-12H5V5h14v2zM7 11h5v5H7z"/>
                 </svg>
               </div>
-              <div className="share-label">캘린더</div>
+              <div className="share-label">카카오 캘린더</div>
             </div>
           </div>
-        </div>
-
-        <div className="modal-footer">
-          <button className="close-button" onClick={onClose}>
-            닫기
-          </button>
         </div>
       </div>
     </div>
